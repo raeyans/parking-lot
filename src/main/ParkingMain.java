@@ -8,7 +8,7 @@ import id.ts.parkinglot.service.ParkingLotService;
 
 public class ParkingMain {
 	public static void main(String[] args) {
-    ParkingLotService parkingLot;
+    	ParkingLotService parkingLot;
 		Scanner scanner;
 
 		try {
@@ -24,35 +24,35 @@ public class ParkingMain {
 			int parkingResult, charge;
 
 			line = scanner.nextLine();
-      if (line.equalsIgnoreCase("exit")) return;
+      		if (line.equalsIgnoreCase("exit")) return;
 			int count = Integer.parseInt(line.split(" ")[1]);
 			parkingLot = new ParkingLotService(count);
 
-			while(scanner.hasNextLine()) {
+			while (scanner.hasNextLine()) {
 				line = scanner.nextLine();
 				String[] commandLine = line.split(" ");
 				command = commandLine[0];
 
-				switch(Command.getCommand(command)) {
-  				case LEAVE:
-            regNo = commandLine[1];
-            charge = Integer.parseInt(commandLine[2]);
-  					parkingLot.leaveCar(regNo, charge);
-  					break;
-  				case PARK:
-  					regNo = commandLine[1];
-  					parkingLot.parkCar(new Car(regNo));
-  					break;
-          case STATUS:
-  					parkingLot.getStatus();
-  					break;
-  				default:
-  					break;
+				switch (Command.getCommand(command)) {
+	  				case LEAVE:
+	            		regNo = commandLine[1];
+	            		charge = Integer.parseInt(commandLine[2]);
+	  					parkingLot.leaveCar(regNo, charge);
+	  					break;
+	  				case PARK:
+	  					regNo = commandLine[1];
+	  					parkingLot.parkCar(new Car(regNo));
+	  					break;
+	          		case STATUS:
+	  					parkingLot.getStatus();
+	  					break;
+	  				default:
+	  					break;
 				}
 			}
 		} 
-    catch (FileNotFoundException e) {
+    	catch (FileNotFoundException e) {
 			System.out.println("File not found");
 		}
-  }
+  	}
 }

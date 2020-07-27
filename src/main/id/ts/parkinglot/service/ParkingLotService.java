@@ -24,6 +24,10 @@ public class ParkingLotService {
 		System.out.println("Created parking lot with " + totalSlot + " slots");
 	}
 
+	public int getAvailability() {
+		return availability;
+	}
+
 	public void parkCar(Car car) {
 		int availableSlot;
 
@@ -42,6 +46,11 @@ public class ParkingLotService {
 	}
 
 	public void leaveCar(String regNum, int hours) {
+		if (capacity == 0) {
+			System.out.println("Sorry, parking lot is not created");
+			return;
+		}
+
 		int result = -1, charge = 0;
 
 		for (int counter = 0; counter < capacity; counter++) {
@@ -72,6 +81,11 @@ public class ParkingLotService {
 	public void getStatus() {
 		System.out.println("Slot No\tRegistration No");
 
+		if (capacity == 0) {
+			System.out.println("Sorry, parking lot is not created");
+			return;
+		}
+
 		for (int counter = 0; counter < capacity; counter++) {
 			Car car = slotMap.get(counter);
 
@@ -79,61 +93,4 @@ public class ParkingLotService {
         		System.out.println((counter+1) + "\t" + car.getRegNo());
 		}
 	}
-
-	// public void getRegNoForColor(String color) {
-	// 	List<String> result = new ArrayList<String>();
-
-	// 	for (int counter = 0; counter < capacity; counter++) {
-	// 		Car car = slotMap.get(counter);
-
-	// 		if (car != null && color.equals(car.getColor()))
- //        		result.add(car.getRegNo());
-	// 	}
-
-	// 	printStringList(result);
-	// }
-
-	// public void getSlotNoForColor(String color) {
-	// 	List<Integer> result = new ArrayList<Integer>();
-
-	// 	for (int counter = 0; counter < capacity; counter++) {
-	// 		Car car = slotMap.get(counter);
-
-	// 		if (car != null && color.equals(car.getColor()))
- //        		result.add(counter+1);
-	// 	}
-
-	// 	printIntegerList(result);
-	// }
-
-	// public int getSlotNoForRegNo(String regNum) {
-	// 	int result = -1;
-
-	// 	for (int counter = 0; counter < capacity; counter++) {
-	// 		Car car = slotMap.get(counter);
-
- //      		if (car != null && regNum.equals(car.getRegNo()))
- //        		result = counter+1;
-	// 	}
-
-	// 	return result;
-	// }
-
-	// private void printStringList(List<String> list) {
-	// 	int counter = 0;
-
-	// 	for (counter = 0; counter < list.size()-1; counter++)
-	// 		System.out.print(list.get(counter) + ", ");
-
-	// 	System.out.println(list.get(counter));
-	// }
-
-	// private void printIntegerList(List<Integer> list) {
-	// 	int counter = 0;
-
-	// 	for (counter = 0; counter < list.size()-1; counter++)
-	// 		System.out.print(list.get(counter) + ", ");
-
-	// 	System.out.println(list.get(counter));
-	// }
 }
