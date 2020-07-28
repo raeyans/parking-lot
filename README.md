@@ -1,28 +1,12 @@
 # Parking-Lot Project
 
-This project can be run with 2 (two) ways:
+The project can be run as follows in one of the two ways :
 
-### Passing a file that contains commands to run the app.
-
+1. The inputs commands are expected and taken from the file specified.
 ```bash
-javac ParkingMain.java
-java ParkingMain file_input.txt
+./parking_lot.sh <input_filepath>
 ```
-
-### Passing the commands directly.
+2. Start the program in interactive mode.
 ```bash
-javac ParkingMain.java
-java ParkingMain
-create_parking_lot 6
-park KA-01-HH-1234
-park KA-01-HH-9999
-park KA-01-BB-0001
-park KA-01-HH-7777
-park KA-01-HH-2701
-park KA-01-HH-3141
-leave KA-01-HH-7777 4
-status
-park KA-01-P-333
-park DL-12-AA-9999
-status
+./parking_lot.sh
 ```
